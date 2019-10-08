@@ -18,10 +18,15 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.JButton;
 import java.awt.TextArea;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Main {
 
-	private JFrame frmUrlsploit;
+	public static JFrame frmUrlsploit;
+	public static TextArea textArea = new TextArea();
 	private JTextField textField;
 
 	/**
@@ -50,10 +55,11 @@ public class Main {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		Color blackDark = new Color(44,47,51); // Dark, but not black
 		Color notQuiteBlack = new Color(35,39,42); // Not Quite black
 		frmUrlsploit = new JFrame();
+		frmUrlsploit.setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		frmUrlsploit.setResizable(false);
 		frmUrlsploit.getContentPane().setFont(new Font("Microsoft JhengHei", Font.PLAIN, 11));
 		frmUrlsploit.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 12));
@@ -66,12 +72,6 @@ public class Main {
 		lblNewLabel.setBounds(10, 34, 84, 18);
 		frmUrlsploit.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 11));
-		textField.setBounds(93, 34, 125, 20);
-		frmUrlsploit.getContentPane().add(textField);
-		textField.setColumns(10);
 		
 		JLabel lblTargetPlatform = new JLabel("Target Platform");
 		lblTargetPlatform.setForeground(new Color(65, 105, 225));
@@ -95,6 +95,17 @@ public class Main {
 		
 		
 		JButton btnBrowse = new JButton("Browse");
+		btnBrowse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				openfile fp = new openfile();
+				try {
+					fp.chooseFile();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		btnBrowse.setForeground(new Color(65, 105, 225));
 		btnBrowse.setBackground(notQuiteBlack);
 		btnBrowse.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 11));
@@ -115,7 +126,7 @@ public class Main {
 		btnStop.setBounds(469, 67, 89, 23);
 		frmUrlsploit.getContentPane().add(btnStop);
 		
-		TextArea textArea = new TextArea();
+		
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		textArea.setForeground(new Color(255, 255, 255));
 		textArea.setBackground(blackDark);
@@ -125,6 +136,14 @@ public class Main {
 		
 		
 		frmUrlsploit.getContentPane().add(textArea);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Microsoft JhengHei", Font.PLAIN, 11));
+		textField.setForeground(new Color(0, 255, 0));
+		textField.setBackground(blackDark);
+		textField.setBounds(104, 33, 123, 21);
+		frmUrlsploit.getContentPane().add(textField);
+		textField.setColumns(10);
 		frmUrlsploit.setTitle("UrlSploit");
 		frmUrlsploit.setBounds(100, 100, 653, 399);
 		frmUrlsploit.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
