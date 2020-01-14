@@ -3,12 +3,13 @@ import argparse
 def main():
     AnimateIntro()
     parser = argparse.ArgumentParser(description="URLSploit.")
-    parser.add_argument("--t", "-template", required=True,help="The template to use. Use --list-templates to view available templates.")
+    parser.add_argument("--t", "-template", required=True,help="The template to use. Use -all to view available templates.")
     parser.add_argument("--p", "-payload", required=True, help="The path of payload to send.")
     args = parser.parse_args()
     
     template = args.t
     payload = args.p
+    
     print(tag_ok + " Starting URLSPLOIT with Template '{t}' and payload '{payload}'.".format(t=template, payload=payload))
     print(tag_hm + " Checking if tempalate '{t}' is valid..".format(t=template))
     if(checkTemplate(template) == True):
