@@ -1,6 +1,13 @@
 # urlsploit
 Payload delivery via URL and some social engineering.
 
+## Running Urlsploit
+```
+sudo python3 urlsploit.py -t windows -p /home/user/backdoors/windows_update.exe
+```
+The above command will start a Legit looking fake Windows update page that triggers file download.
+
+
 ## Installation 
 ```
 git clone https://github.com/quantumcore/urlsploit
