@@ -7,8 +7,8 @@ sudo python3 urlsploit.py -t windows -p /home/user/backdoors/windows_update.exe
 ```
 The above command will start a Legit looking fake Windows update page that triggers file download.
 
-[sample_one](https://github.com/quantumcore/urlsploit/blob/master/img/main.png)
-[sample_two](https://github.com/quantumcore/urlsploit/blob/master/img/two.png)
+![sample_one](https://github.com/quantumcore/urlsploit/blob/master/img/main.png)
+![sample_two](https://github.com/quantumcore/urlsploit/blob/master/img/two.png)
 
 ## Installation 
 ```
